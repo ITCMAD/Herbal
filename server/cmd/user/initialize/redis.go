@@ -1,8 +1,8 @@
-package intialize
+package initialize
 
 import (
 	"Herbal/server/cmd/user/config"
-	"Herbal/shared/consts"
+	"Herbal/server/shared/consts"
 	"fmt"
 	"github.com/go-redis/redis/v8"
 )

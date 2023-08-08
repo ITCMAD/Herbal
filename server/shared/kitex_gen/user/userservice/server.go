@@ -2,7 +2,7 @@
 package userservice
 
 import (
-	user "Herbal/shared/kitex_gen/user"
+	"Herbal/server/shared/kitex_gen/user"
 	server "github.com/cloudwego/kitex/server"
 )
 

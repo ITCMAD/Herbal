@@ -1,7 +1,7 @@
-package intialize
+package initialize
 
 import (
-	"Herbal/shared/consts"
+	"Herbal/server/shared/consts"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"os"

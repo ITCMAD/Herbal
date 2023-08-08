@@ -1,14 +1,13 @@
-package intialize
+package initialize
 
 import (
 	"Herbal/server/cmd/user/config"
-	"Herbal/shared/consts"
+	"Herbal/server/shared/consts"
 	"fmt"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"gorm.io/gorm/schema"
 	"gorm.io/plugin/opentelemetry/logging/logrus"
 	"gorm.io/plugin/opentelemetry/tracing"
 	"time"
@@ -29,9 +28,9 @@ func InitDB() *gorm.DB {
 
 	// global mode
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
-		NamingStrategy: schema.NamingStrategy{
-			SingularTable: true,
-		},
+		//NamingStrategy: schema.NamingStrategy{
+		//	SingularTable: true,
+		//},
 		Logger: newLogger,
 	})
 	if err != nil {

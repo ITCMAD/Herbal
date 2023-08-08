@@ -3,7 +3,7 @@
 package user
 
 import (
-	"Herbal/shared/kitex_gen/base"
+	"Herbal/server/shared/kitex_gen/base"
 	"context"
 	"fmt"
 	"github.com/apache/thrift/lib/go/thrift"

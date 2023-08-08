@@ -3,7 +3,7 @@
 package userservice
 
 import (
-	user "Herbal/shared/kitex_gen/user"
+	"Herbal/server/shared/kitex_gen/user"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"

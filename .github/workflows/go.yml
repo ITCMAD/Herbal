@@ -34,5 +34,20 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-go-
 
+    - name: Install Dependencies
+      run: go mod download
+
+    # 安全
+    - name: Run Gosec Security Scanner
+      uses: securego/gosec@master
+      with:
+        args: ./...
+
+      # 代码风格
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v2
+      with:
+        version: v1.53
+
     - name: Unit Test
       run: go test -v ./...

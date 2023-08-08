@@ -3,6 +3,7 @@
 package user
 
 import (
+	base2 "Herbal/server/shared/kitex_gen/base"
 	"bytes"
 	"fmt"
 	"reflect"
@@ -10,7 +11,6 @@ import (
 
 	"github.com/apache/thrift/lib/go/thrift"
 
-	"Herbal/shared/kitex_gen/base"
 	"github.com/cloudwego/kitex/pkg/protocol/bthrift"
 )
 
@@ -22,7 +22,7 @@ var (
 	_ = reflect.Type(nil)
 	_ = thrift.TProtocol(nil)
 	_ = bthrift.BinaryWriter(nil)
-	_ = base.KitexUnusedProtection
+	_ = base2.KitexUnusedProtection
 )
 
 func (p *RegisterReq) FastRead(buf []byte) (int, error) {
@@ -415,7 +415,7 @@ ReadStructEndError:
 func (p *RegisterResp) FastReadField1(buf []byte) (int, error) {
 	offset := 0
 
-	tmp := base.NewBaseResponse()
+	tmp := base2.NewBaseResponse()
 	if l, err := tmp.FastRead(buf[offset:]); err != nil {
 		return offset, err
 	} else {
@@ -864,7 +864,7 @@ ReadStructEndError:
 func (p *LoginResp) FastReadField1(buf []byte) (int, error) {
 	offset := 0
 
-	tmp := base.NewBaseResponse()
+	tmp := base2.NewBaseResponse()
 	if l, err := tmp.FastRead(buf[offset:]); err != nil {
 		return offset, err
 	} else {
@@ -1271,7 +1271,7 @@ ReadStructEndError:
 func (p *ChangePasswordResp) FastReadField1(buf []byte) (int, error) {
 	offset := 0
 
-	tmp := base.NewBaseResponse()
+	tmp := base2.NewBaseResponse()
 	if l, err := tmp.FastRead(buf[offset:]); err != nil {
 		return offset, err
 	} else {

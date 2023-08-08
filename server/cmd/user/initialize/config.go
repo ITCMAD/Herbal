@@ -1,8 +1,8 @@
-package intialize
+package initialize
 
 import (
 	"Herbal/server/cmd/user/config"
-	"Herbal/shared/consts"
+	"Herbal/server/shared/consts"
 	"github.com/bwmarrin/snowflake"
 	"github.com/bytedance/sonic"
 	"github.com/cloudwego/kitex/pkg/klog"

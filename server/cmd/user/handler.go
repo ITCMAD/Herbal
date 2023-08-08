@@ -1,12 +1,21 @@
 package main
 
 import (
-	"Herbal/shared/kitex_gen/user"
+	"Herbal/server/shared/kitex_gen/user"
 	"context"
 )
 
+type MysqlManager interface {
+}
+
+type RedisManager interface {
+}
+
 // UserServiceImpl implements the last service interface defined in the IDL.
-type UserServiceImpl struct{}
+type UserServiceImpl struct {
+	MysqlManager
+	RedisManager
+}
 
 // Register implements the UserServiceImpl interface.
 func (s *UserServiceImpl) Register(ctx context.Context, req *user.RegisterReq) (resp *user.RegisterResp, err error) {
