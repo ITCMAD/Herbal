@@ -1,16 +1,50 @@
 package main
 
 import (
-	user "Herbal/user/userservice"
-	"log"
+	"Herbal/server/cmd/user/config"
+	"Herbal/server/cmd/user/initialize"
+	"Herbal/server/cmd/user/pkg/mysql"
+	"Herbal/server/cmd/user/pkg/redis"
+	user "Herbal/server/shared/kitex_gen/user/userservice"
+	"context"
+	"github.com/cloudwego/kitex/pkg/klog"
+	"github.com/cloudwego/kitex/pkg/limit"
+	"github.com/cloudwego/kitex/pkg/rpcinfo"
+	"github.com/cloudwego/kitex/pkg/utils"
+	"github.com/cloudwego/kitex/server"
+	"github.com/kitex-contrib/obs-opentelemetry/provider"
+	"github.com/kitex-contrib/obs-opentelemetry/tracing"
+
+	"net"
 )
 
 func main() {
-	svr := user.NewServer(new(UserServiceImpl))
+	initialize.InitLogger()
+	initialize.InitConfig()
+	r, info := initialize.InitConfig()
+	db := initialize.InitDB()
+	rdb := initialize.InitRedis()
+	p := provider.NewOpenTelemetryProvider(
+		provider.WithServiceName(config.GlobalServerConfig.Name),
+		provider.WithExportEndpoint(config.GlobalServerConfig.OtelInfo.EndPoint),
+		provider.WithInsecure(),
+	)
+	defer p.Shutdown(context.Background())
 
+	svr := user.NewServer(&UserServiceImpl{
+		MysqlManager: mysql.NewUserManager(db),
+		RedisManager: redis.NewManager(rdb),
+	},
+		server.WithServiceAddr(utils.NewNetAddr("tcp", net.JoinHostPort(config.GlobalServerConfig.Host, config.GlobalServerConfig.Port))),
+		server.WithRegistry(r),
+		server.WithRegistryInfo(info),
+		server.WithLimit(&limit.Option{MaxConnections: 2000, MaxQPS: 500}),
+		server.WithSuite(tracing.NewServerSuite()),
+		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: config.GlobalServerConfig.Name}),
+	)
 	err := svr.Run()
 
 	if err != nil {
-		log.Println(err.Error())
+		klog.Fatal(err)
 	}
 }

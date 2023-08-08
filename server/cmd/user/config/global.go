@@ -1,6 +1,6 @@
 package config
 
-var(
+var (
 	GlobalServerConfig ServerConfig
-	
+	GlobalNacosConfig  NacosConfig
 )
