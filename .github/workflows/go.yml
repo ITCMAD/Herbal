@@ -16,13 +16,23 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - uses: docker-practice/actions-setup-docker@master
+      timeout-minutes: 12
+    - run: |
+        docker pull mysql:latest
+        docker pull redis:latest
+
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
         go-version: '1.20'
 
-    - name: Build
-      run: go build -v ./...
+    - uses: actions/cache@v3
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
 
-    - name: Test
+    - name: Unit Test
       run: go test -v ./...
