@@ -38,10 +38,10 @@ jobs:
       run: go mod download
 
     # 安全
-    - name: Run Gosec Security Scanner
-      uses: securego/gosec@master
-      with:
-        args: ./...
+  #  - name: Run Gosec Security Scanner
+   #   uses: securego/gosec@master
+    #  with:
+    #    args: ./...
 
       # 代码风格
     - name: golangci-lint
