@@ -7,6 +7,7 @@
     <list default="true" id="0fd80a12-0369-43df-8301-4247388b8d1c" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/go.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/go.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/idl/http/user.thrift" beforeDir="false" afterPath="$PROJECT_DIR$/server/idl/http/user.thrift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
