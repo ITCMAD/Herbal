@@ -5,26 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fd80a12-0369-43df-8301-4247388b8d1c" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/go.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/go.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Herbal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Herbal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/thriftCompiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/thriftCompiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/config/global.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/config/global.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/initialize/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/initialize/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/initialize/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/initialize/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/initialize/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/initialize/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/initialize/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/initialize/redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/cmd/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/pkg/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/pkg/mysql/mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/pkg/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/pkg/redis/redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/shared/kitex_gen/base/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/kitex_gen/base/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/shared/kitex_gen/user/k-user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/kitex_gen/user/k-user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/shared/kitex_gen/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/kitex_gen/user/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/shared/kitex_gen/user/userservice/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/kitex_gen/user/userservice/client.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/shared/kitex_gen/user/userservice/invoker.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/kitex_gen/user/userservice/invoker.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/shared/kitex_gen/user/userservice/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/kitex_gen/user/userservice/server.go" afterDir="false" />
@@ -58,28 +43,32 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2TgYLOuVJkPrNew6NtfjRWe394t" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/杨璟轩&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "C:/Users/杨璟轩",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server" />
@@ -92,6 +81,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="VgoProject">

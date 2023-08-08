@@ -5,7 +5,7 @@ import (
 	"Herbal/server/cmd/user/initialize"
 	"Herbal/server/cmd/user/pkg/mysql"
 	"Herbal/server/cmd/user/pkg/redis"
-	"Herbal/server/shared/kitex_gen/user/userservice"
+	user "Herbal/server/shared/kitex_gen/user/userservice"
 	"context"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/limit"
@@ -31,7 +31,7 @@ func main() {
 	)
 	defer p.Shutdown(context.Background())
 
-	svr := userservice.NewServer(&UserServiceImpl{
+	svr := user.NewServer(&UserServiceImpl{
 		MysqlManager: mysql.NewUserManager(db),
 		RedisManager: redis.NewManager(rdb),
 	},
