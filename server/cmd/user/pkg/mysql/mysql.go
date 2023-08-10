@@ -12,6 +12,11 @@ type UserManager struct {
 	db *gorm.DB
 }
 
+func (u UserManager) CreateUser(username, role string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
 func NewUserManager(db *gorm.DB) *UserManager {
 	m := db.Migrator()
 	if !m.HasTable(&User{}) {
