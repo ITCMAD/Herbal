@@ -3,7 +3,9 @@ package main
 import (
 	"Herbal/server/cmd/user/config"
 	"Herbal/server/cmd/user/initialize"
-	"Herbal/server/shared/kitex_gen/user/userservice"
+	"Herbal/server/cmd/user/pkg/mysql"
+	"Herbal/server/cmd/user/pkg/redis"
+	user "Herbal/server/shared/kitex_gen/user/userservice"
 	"context"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/limit"
@@ -29,9 +31,9 @@ func main() {
 	)
 	defer p.Shutdown(context.Background())
 
-	svr := userservice.NewServer(&UserServiceImpl{
-		MysqlManager: db,
-		RedisManager: rdb,
+	svr := user.NewServer(&UserServiceImpl{
+		MysqlManager: mysql.NewUserManager(db),
+		RedisManager: redis.NewManager(rdb),
 	},
 		server.WithServiceAddr(utils.NewNetAddr("tcp", net.JoinHostPort(config.GlobalServerConfig.Host, config.GlobalServerConfig.Port))),
 		server.WithRegistry(r),

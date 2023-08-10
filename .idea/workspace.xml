@@ -5,31 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fd80a12-0369-43df-8301-4247388b8d1c" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/config/global.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/logger.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/registry.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/rpc/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/rpc/user_service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/sentinel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/user/initialize/registry.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/go.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/go.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/api/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/api/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/api/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/user/initialize/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/initialize/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/user/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/cmd/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/cmd/user/pkg/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/pkg/mysql/mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/idl/http/user.thrift" beforeDir="false" afterPath="$PROJECT_DIR$/server/idl/http/user.thrift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/shared/consts/consts.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/consts/consts.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +78,7 @@
       <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\user\pkg\mysql" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 构建.go build main.go">
+  <component name="RunManager" selected="Go 构建.go build main.go (1)">
     <configuration name="go build Herbal/server/cmd/user" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="Herbal" />
       <working_directory value="$PROJECT_DIR$" />
@@ -127,8 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 构建.go build main.go" />
         <item itemvalue="Go 构建.go build main.go (1)" />
+        <item itemvalue="Go 构建.go build main.go" />
         <item itemvalue="Go 构建.go build Herbal/server/cmd/user" />
       </list>
     </recent_temporary>

@@ -6,6 +6,7 @@ import (
 )
 
 type MysqlManager interface {
+	CreateUser(username, role string) error
 }
 
 type RedisManager interface {
