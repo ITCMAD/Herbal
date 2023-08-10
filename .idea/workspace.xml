@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fd80a12-0369-43df-8301-4247388b8d1c" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/config/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/config/global.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/logger.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/registry.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/rpc/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/rpc/user_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/api/initialize/sentinel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cmd/user/initialize/registry.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/go.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/go.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/api/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/api/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/api/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/user/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/user/initialize/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/initialize/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/user/pkg/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/user/pkg/mysql/mysql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/idl/http/user.thrift" beforeDir="false" afterPath="$PROJECT_DIR$/server/idl/http/user.thrift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/shared/consts/consts.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/shared/consts/consts.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,31 +66,72 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "last_opened_file_path": "C:/Users/杨璟轩",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu-20.04/home/Herbal/Herbal/server/cmd/api/initialize&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\api\initialize" />
+      <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\user\initialize" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\api\config" />
+      <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\api" />
       <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server" />
       <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\user\pkg\redis" />
       <recent name="\\wsl$\Ubuntu-20.04\home\Herbal\Herbal\server\cmd\user\pkg\mysql" />
     </key>
+  </component>
+  <component name="RunManager" selected="Go 构建.go build main.go">
+    <configuration name="go build Herbal/server/cmd/user" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Herbal" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="Herbal/server/cmd/user" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/server/cmd/user/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Herbal" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/server/cmd/user/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Herbal" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/server/cmd/api/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go 构建.go build main.go" />
+        <item itemvalue="Go 构建.go build main.go (1)" />
+        <item itemvalue="Go 构建.go build Herbal/server/cmd/user" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
