@@ -1,5 +1,16 @@
 version: "3.7"
 services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 224488
+      MYSQL_DATABASE: herbal
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 224488
+    ports:
+      - "13306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
 
   minio:
     image: minio/minio:latest
@@ -19,7 +30,7 @@ services:
     image: redis:latest
     restart: always
     ports:
-      - "6379:6379"
+      - "16379:6379"
     environment:
       TZ: Asia/Shanghai
     volumes:
@@ -82,3 +93,5 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
     ports:
       - "3000:3000"
+volumes:
+  mysql_data:

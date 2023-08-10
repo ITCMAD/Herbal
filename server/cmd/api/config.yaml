@@ -1,0 +1,7 @@
+host: 49.7.114.49
+port: 8849
+namespace: dev001
+user: nacos
+password: nacos123
+dataid: user_dev_config
+group: herbal_group

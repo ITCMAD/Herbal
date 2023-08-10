@@ -1,8 +1,11 @@
 package consts
 
 const (
+	ApiConfigPath  = "./server/cmd/api/config.yaml"
 	UserConfigPath = "./server/cmd/user/config.yaml"
-	KlogFilePath   = "./tmp/klog/logs/"
+
+	HlogFilePath = "./tmp/hlog/logs/"
+	KlogFilePath = "./tmp/klog/logs/"
 
 	UserSnowflakeNode = iota
 	NacosSnowflakeNode
