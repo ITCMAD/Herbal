@@ -2,6 +2,7 @@ package rpc
 
 import (
 	"Herbal/server/cmd/api/config"
+	"Herbal/server/shared/consts"
 	"Herbal/server/shared/kitex_gen/user/userservice"
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/klog"
@@ -11,11 +12,26 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
+	"github.com/spf13/viper"
 )
 
 func initUser() {
+	v := viper.New()
+	v.SetConfigFile(consts.ApiConfigPath)
+	if err := v.ReadInConfig(); err != nil {
+		klog.Fatalf("read viper config failed: %s", err)
+	}
+	if err := v.Unmarshal(&config.GlobalNacosConfig); err != nil {
+		klog.Fatalf("unmarshal err failed: %s", err)
+	}
+
 	sc := []constant.ServerConfig{
-		*constant.NewServerConfig(config.GlobalNacosConfig.Host, config.GlobalNacosConfig.Port),
+		{
+			IpAddr:      config.GlobalNacosConfig.Host,
+			Port:        config.GlobalNacosConfig.Port,
+			ContextPath: "/nacos",
+			Scheme:      "http",
+		},
 	}
 
 	cc := constant.ClientConfig{
@@ -51,6 +67,7 @@ func initUser() {
 	//)
 
 	// create a new client
+	config.GlobalServerConfig.UserSrvInfo.Name = "demo.go"
 	c, err := userservice.NewClient(
 		config.GlobalServerConfig.UserSrvInfo.Name,
 		client.WithResolver(r),                                     // service discovery
