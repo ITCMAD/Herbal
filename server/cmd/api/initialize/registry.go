@@ -11,11 +11,20 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
+	"github.com/spf13/viper"
 
 	"net"
 )
 
 func InitRegistry() (registry.Registry, *registry.Info) {
+	v := viper.New()
+	v.SetConfigFile(consts.ApiConfigPath)
+	if err := v.ReadInConfig(); err != nil {
+		klog.Fatalf("read viper config failed: %s", err)
+	}
+	if err := v.Unmarshal(&config.GlobalNacosConfig); err != nil {
+		klog.Fatalf("unmarshal err failed: %s", err)
+	}
 	sc := []constant.ServerConfig{
 		*constant.NewServerConfig(config.GlobalNacosConfig.Host, config.GlobalNacosConfig.Port),
 	}

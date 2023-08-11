@@ -4,7 +4,6 @@ import (
 	"Herbal/server/cmd/user/config"
 	"Herbal/server/shared/consts"
 	"github.com/bwmarrin/snowflake"
-	"github.com/bytedance/sonic"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/registry"
 	"github.com/cloudwego/kitex/pkg/utils"
@@ -13,12 +12,13 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
+	"gopkg.in/yaml.v3"
 	"net"
 )
 
 func InitConfig() (registry.Registry, *registry.Info) {
 	v := viper.New()
-	v.SetConfigFile(consts.UserConfigPath)
+	v.SetConfigFile(consts.ApiConfigPath)
 	if err := v.ReadInConfig(); err != nil {
 		klog.Fatalf("read viper config failed: %s", err)
 	}
@@ -56,7 +56,7 @@ func InitConfig() (registry.Registry, *registry.Info) {
 		klog.Fatalf("get config failed: %s", err.Error())
 	}
 
-	err = sonic.Unmarshal([]byte(content), &config.GlobalServerConfig)
+	err = yaml.Unmarshal([]byte(content), &config.GlobalServerConfig)
 	if err != nil {
 		klog.Fatalf("nacos config failed: %s", err)
 	}
