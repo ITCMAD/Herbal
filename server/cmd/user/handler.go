@@ -21,7 +21,9 @@ type UserServiceImpl struct {
 // Register implements the UserServiceImpl interface.
 func (s *UserServiceImpl) Register(ctx context.Context, req *user.RegisterReq) (resp *user.RegisterResp, err error) {
 	// TODO: Your code here...
-	return
+	resp.BaseResp.StatusCode = 2
+	resp.BaseResp.StatusMsg = "22"
+	return resp, nil
 }
 
 // Login implements the UserServiceImpl interface.

@@ -32,11 +32,10 @@ services:
     ports:
       - "16379:6379"
     environment:
-      TZ: Asia/Shanghai
+      TZ: Asia/Shanghai　
     volumes:
-      - ./data/data/redis:/data
-      - ./data/logs/redis:/logs
-    command: redis-server --requirepass freecar
+      - ./redis_data/data/redis:/data
+      - ./redis_data/logs/redis:/logs
 
   # Collector
   otel-collector:

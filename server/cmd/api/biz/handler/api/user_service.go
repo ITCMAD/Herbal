@@ -3,6 +3,8 @@
 package api
 
 import (
+	"Herbal/server/cmd/api/config"
+	"Herbal/server/shared/kitex_gen/user"
 	"context"
 
 	api "Herbal/server/cmd/api/biz/model/api"
@@ -22,8 +24,19 @@ func Register(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	resp := new(base.NilResponse)
-
+	cli := config.GlobalUserClient
+	res, err := cli.Register(ctx, &user.RegisterReq{
+		Username:        req.Username,
+		Password:        req.Password,
+		ConfirmPassword: req.ConfirmPassword,
+		Role:            req.Role,
+	})
+	resp := &api.RegisterResp{
+		Base: &api.BaseResponse{
+			StatusCode: res.BaseResp.StatusCode,
+			StatusMsg:  res.BaseResp.StatusMsg,
+		},
+	}
 	c.JSON(consts.StatusOK, resp)
 }
 

@@ -6,13 +6,12 @@ import (
 	"Herbal/server/cmd/user/pkg/mysql"
 	"Herbal/server/cmd/user/pkg/redis"
 	user "Herbal/server/shared/kitex_gen/user/userservice"
-	"context"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/limit"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/pkg/utils"
 	"github.com/cloudwego/kitex/server"
-	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	"net"
 )
@@ -24,12 +23,12 @@ func main() {
 	r, info := initialize.InitRegistry()
 	db := initialize.InitDB()
 	rdb := initialize.InitRedis()
-	p := provider.NewOpenTelemetryProvider(
-		provider.WithServiceName(config.GlobalServerConfig.Name),
-		provider.WithExportEndpoint(config.GlobalServerConfig.OtelInfo.EndPoint),
-		provider.WithInsecure(),
-	)
-	defer p.Shutdown(context.Background())
+	//p := provider.NewOpenTelemetryProvider(
+	//	provider.WithServiceName(config.GlobalServerConfig.Name),
+	//	provider.WithExportEndpoint(config.GlobalServerConfig.OtelInfo.EndPoint),
+	//	provider.WithInsecure(),
+	//)
+	//defer p.Shutdown(context.Background())
 
 	svr := user.NewServer(&UserServiceImpl{
 		MysqlManager: mysql.NewUserManager(db),
@@ -42,6 +41,7 @@ func main() {
 		server.WithSuite(tracing.NewServerSuite()),
 		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: config.GlobalServerConfig.Name}),
 	)
+	hlog.Info("Run!")
 	err := svr.Run()
 
 	if err != nil {

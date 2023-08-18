@@ -2,14 +2,13 @@ package initialize
 
 import (
 	"Herbal/server/shared/consts"
+	"gopkg.in/natefinch/lumberjack.v2"
 	"os"
 	"path"
-	"runtime"
 	"time"
 
 	"github.com/cloudwego/hertz/pkg/common/hlog"
 	hertzlogrus "github.com/hertz-contrib/obs-opentelemetry/logging/logrus"
-	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 // InitLogger to init logrus
@@ -38,12 +37,9 @@ func InitLogger() {
 		MaxAge:     10,   // A file can exist for a maximum of 10 days.
 		Compress:   true, // Compress with gzip.
 	}
-	if runtime.GOOS == "linux" {
-		logger.SetOutput(lumberjackLogger)
-		logger.SetLevel(hlog.LevelWarn)
-	} else {
-		logger.SetLevel(hlog.LevelDebug)
-	}
+
+	logger.SetOutput(lumberjackLogger)
+	logger.SetLevel(hlog.LevelDebug)
 
 	hlog.SetLogger(logger)
 }

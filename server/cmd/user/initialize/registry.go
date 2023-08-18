@@ -4,6 +4,7 @@ import (
 	"Herbal/server/cmd/user/config"
 	"Herbal/server/shared/consts"
 	"github.com/bwmarrin/snowflake"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/registry"
 	"github.com/cloudwego/kitex/pkg/utils"
@@ -51,5 +52,6 @@ func InitRegistry() (registry.Registry, *registry.Info) {
 		Addr:        utils.NewNetAddr("tcp", net.JoinHostPort(config.GlobalServerConfig.Host, config.GlobalServerConfig.Port)),
 		Tags:        map[string]string{"ID": sf.Generate().Base36()},
 	}
+	hlog.Info("has start")
 	return r, info
 }

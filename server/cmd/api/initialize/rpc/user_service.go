@@ -2,29 +2,19 @@ package rpc
 
 import (
 	"Herbal/server/cmd/api/config"
-	"Herbal/server/shared/consts"
 	"Herbal/server/shared/kitex_gen/user/userservice"
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/loadbalance"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
+	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	nacos "github.com/kitex-contrib/registry-nacos/resolver"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
-	"github.com/spf13/viper"
 )
 
 func initUser() {
-	v := viper.New()
-	v.SetConfigFile(consts.ApiConfigPath)
-	if err := v.ReadInConfig(); err != nil {
-		klog.Fatalf("read viper config failed: %s", err)
-	}
-	if err := v.Unmarshal(&config.GlobalNacosConfig); err != nil {
-		klog.Fatalf("unmarshal err failed: %s", err)
-	}
-
 	sc := []constant.ServerConfig{
 		{
 			IpAddr:      config.GlobalNacosConfig.Host,
@@ -67,13 +57,12 @@ func initUser() {
 	//)
 
 	// create a new client
-	config.GlobalServerConfig.UserSrvInfo.Name = "demo.go"
 	c, err := userservice.NewClient(
 		config.GlobalServerConfig.UserSrvInfo.Name,
 		client.WithResolver(r),                                     // service discovery
 		client.WithLoadBalancer(loadbalance.NewWeightedBalancer()), // load balance
 		client.WithMuxConnection(1),                                // multiplexing
-		//client.WithSuite(tracing.NewClientSuite()),
+		client.WithSuite(tracing.NewClientSuite()),
 		client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: config.GlobalServerConfig.UserSrvInfo.Name}),
 	)
 	if err != nil {

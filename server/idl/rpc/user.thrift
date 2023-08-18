@@ -12,9 +12,6 @@ struct RegisterReq{
 
 struct RegisterResp{
 1:common.BaseResponse base_resp
-2:string password
-3:string confirm_password
-4:string role
 }
 
 struct LoginReq{

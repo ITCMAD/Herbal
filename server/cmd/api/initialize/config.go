@@ -1,22 +1,17 @@
 package initialize
 
 import (
-	"Herbal/server/cmd/user/config"
+	"Herbal/server/cmd/api/config"
 	"Herbal/server/shared/consts"
-	"github.com/bwmarrin/snowflake"
 	"github.com/cloudwego/kitex/pkg/klog"
-	"github.com/cloudwego/kitex/pkg/registry"
-	"github.com/cloudwego/kitex/pkg/utils"
-	nacos "github.com/kitex-contrib/registry-nacos/registry"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
-	"gopkg.in/yaml.v3"
-	"net"
+	"strings"
 )
 
-func InitConfig() (registry.Registry, *registry.Info) {
+func InitConfig() {
 	v := viper.New()
 	v.SetConfigFile(consts.ApiConfigPath)
 	if err := v.ReadInConfig(); err != nil {
@@ -25,7 +20,6 @@ func InitConfig() (registry.Registry, *registry.Info) {
 	if err := v.Unmarshal(&config.GlobalNacosConfig); err != nil {
 		klog.Fatalf("unmarshal err failed: %s", err)
 	}
-	klog.Infof("Config Info: %v", config.GlobalNacosConfig)
 
 	sc := []constant.ServerConfig{
 		*constant.NewServerConfig(config.GlobalNacosConfig.Host, config.GlobalNacosConfig.Port),
@@ -56,31 +50,13 @@ func InitConfig() (registry.Registry, *registry.Info) {
 		klog.Fatalf("get config failed: %s", err.Error())
 	}
 
-	err = yaml.Unmarshal([]byte(content), &config.GlobalServerConfig)
+	viper.SetConfigType("yaml")
+	err = viper.ReadConfig(strings.NewReader(content))
+	if err != nil {
+		klog.Fatal("viper fail to read config")
+	}
+	err = viper.Unmarshal(&config.GlobalServerConfig)
 	if err != nil {
 		klog.Fatalf("nacos config failed: %s", err)
 	}
-
-	cli, err := clients.NewNamingClient(
-		vo.NacosClientParam{
-			ClientConfig:  &cc,
-			ServerConfigs: sc,
-		},
-	)
-	if err != nil {
-		klog.Errorf("create registry err: %s", err.Error())
-	}
-
-	r := nacos.NewNacosRegistry(cli, nacos.WithGroup(config.GlobalNacosConfig.Group))
-
-	sf, err := snowflake.NewNode(consts.NacosSnowflakeNode)
-	if err != nil {
-		klog.Fatalf("generate nacos service name failed:%s", err)
-	}
-	info := &registry.Info{
-		ServiceName: config.GlobalServerConfig.Name,
-		Addr:        utils.NewNetAddr("tcp", net.JoinHostPort(config.GlobalServerConfig.Host, config.GlobalServerConfig.Port)),
-		Tags:        map[string]string{"ID": sf.Generate().Base36()},
-	}
-	return r, info
 }

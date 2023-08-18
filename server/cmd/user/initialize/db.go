@@ -10,11 +10,13 @@ import (
 	"gorm.io/gorm/logger"
 	"gorm.io/plugin/opentelemetry/logging/logrus"
 	"gorm.io/plugin/opentelemetry/tracing"
+	"log"
 	"time"
 )
 
 // InitDB to init database
 func InitDB() *gorm.DB {
+	log.Println(config.GlobalServerConfig.MysqlInfo)
 	c := config.GlobalServerConfig.MysqlInfo
 	dsn := fmt.Sprintf(consts.MySqlDSN, c.User, c.Password, c.Host, c.Port, c.Name)
 	newLogger := logger.New(
@@ -25,7 +27,6 @@ func InitDB() *gorm.DB {
 			Colorful:      true,          // Disable color printing
 		},
 	)
-
 	// global mode
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		//NamingStrategy: schema.NamingStrategy{
@@ -36,7 +37,6 @@ func InitDB() *gorm.DB {
 	if err != nil {
 		klog.Fatalf("init gorm failed: %s", err.Error())
 	}
-
 	if err = db.Use(tracing.NewPlugin()); err != nil {
 		klog.Fatalf("use tracing plugin failed: %s", err.Error())
 	}

@@ -3,12 +3,13 @@ package initialize
 import (
 	"Herbal/server/cmd/user/config"
 	"Herbal/server/shared/consts"
-	"github.com/bytedance/sonic"
+	"fmt"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
+	"strings"
 )
 
 func InitConfig() {
@@ -50,7 +51,13 @@ func InitConfig() {
 	if err != nil {
 		klog.Fatalf("get config failed: %s", err.Error())
 	}
-	err = sonic.Unmarshal([]byte(content), &config.GlobalServerConfig)
+	viper.SetConfigType("yaml")
+	err = viper.ReadConfig(strings.NewReader(content))
+	if err != nil {
+		klog.Fatal(fmt.Errorf("failed to read config: %s", err))
+	}
+
+	err = viper.Unmarshal(&config.GlobalServerConfig)
 	if err != nil {
 		klog.Fatalf("nacos config failed: %s", err)
 	}

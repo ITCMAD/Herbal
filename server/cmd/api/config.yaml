@@ -3,5 +3,5 @@ port: 8849
 namespace: dev001
 user: nacos
 password: 224488
-dataid: user_dev_config
+dataid: api_dev_config
 group: herbal_group

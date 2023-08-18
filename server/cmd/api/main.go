@@ -6,16 +6,9 @@ import (
 	"Herbal/server/cmd/api/config"
 	"Herbal/server/cmd/api/initialize"
 	"Herbal/server/cmd/api/initialize/rpc"
-	"context"
 	"fmt"
-	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
-	"github.com/cloudwego/hertz/pkg/protocol/http1"
-	"github.com/cloudwego/hertz/pkg/protocol/http1/factory"
-	hertzSentinel "github.com/hertz-contrib/opensergo/sentinel/adapter"
-	"github.com/hertz-contrib/pprof"
-	"net/http"
-	"time"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 )
 
 func main() {
@@ -23,32 +16,34 @@ func main() {
 	initialize.InitLogger()
 	initialize.InitConfig()
 	r, info := initialize.InitRegistry()
-	initialize.InitSentinel()
+	//initialize.InitSentinel()
 	//tracer, trcCfg := hertztracing.NewServerTracer()
 	rpc.Init()
 	// create a new server
 	h := server.New(
 		//tracer,
-		server.WithALPN(true),
+		//server.WithALPN(true),
 		server.WithHostPorts(fmt.Sprintf(":%s", config.GlobalServerConfig.Port)),
 		server.WithRegistry(r, info),
 		server.WithHandleMethodNotAllowed(true),
 	)
 	// add h2
-	h.AddProtocol("h2", factory.NewServerFactory(&http1.Option{
-		ReadTimeout:      time.Minute,
-		DisableKeepalive: false,
-	}))
+	//h.AddProtocol("h2", factory.NewServerFactory(&http1.Option{
+	//	ReadTimeout:      time.Minute,
+	//	DisableKeepalive: false,
+	//}))
 	// use pprof & tracer & sentinel
-	pprof.Register(h)
+	//pprof.Register(h)
 	//h.Use(hertztracing.ServerMiddleware(trcCfg))
-	h.Use(hertzSentinel.SentinelServerMiddleware(
-		// abort with status 429 by default
-		hertzSentinel.WithServerBlockFallback(func(c context.Context, ctx *app.RequestContext) {
-			ctx.JSON(http.StatusTooManyRequests, nil)
-			ctx.Abort()
-		}),
-	))
+	//h.Use(hertzSentinel.SentinelServerMiddleware(
+	//	// abort with status 429 by default
+	//	hertzSentinel.WithServerBlockFallback(func(c context.Context, ctx *app.RequestContext) {
+	//		ctx.JSON(http.StatusTooManyRequests, nil)
+	//		ctx.Abort()
+	//	}),
+	//))
+
 	register(h)
+	hlog.Infof("Listening at port:%s", config.GlobalServerConfig.Port)
 	h.Spin()
 }
