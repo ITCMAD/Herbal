@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Herbal/server/shared/kitex_gen/base"
 	"Herbal/server/shared/kitex_gen/user"
 	"context"
 )
@@ -20,9 +21,15 @@ type UserServiceImpl struct {
 
 // Register implements the UserServiceImpl interface.
 func (s *UserServiceImpl) Register(ctx context.Context, req *user.RegisterReq) (resp *user.RegisterResp, err error) {
-	// TODO: Your code here...
-	resp.BaseResp.StatusCode = 2
-	resp.BaseResp.StatusMsg = "22"
+	resp = &user.RegisterResp{
+		Password:        "22",
+		Role:            "33",
+		ConfirmPassword: "22",
+		BaseResp: &base.BaseResponse{
+			StatusCode: 0,
+			StatusMsg:  "sss",
+		},
+	}
 	return resp, nil
 }
 

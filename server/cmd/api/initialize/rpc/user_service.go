@@ -12,9 +12,11 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
+	"log"
 )
 
 func initUser() {
+	log.Println(config.GlobalNacosConfig)
 	sc := []constant.ServerConfig{
 		{
 			IpAddr:      config.GlobalNacosConfig.Host,
@@ -49,6 +51,7 @@ func initUser() {
 	if err != nil {
 		klog.Fatalf("new consul client failed: %s", err.Error())
 	}
+	log.Println(r)
 	// init OpenTelemetry
 	//provider.NewOpenTelemetryProvider(
 	//	provider.WithServiceName(config.GlobalServerConfig.UserSrvInfo.Name),

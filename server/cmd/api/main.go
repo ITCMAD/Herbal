@@ -42,7 +42,6 @@ func main() {
 	//		ctx.Abort()
 	//	}),
 	//))
-
 	register(h)
 	hlog.Infof("Listening at port:%s", config.GlobalServerConfig.Port)
 	h.Spin()

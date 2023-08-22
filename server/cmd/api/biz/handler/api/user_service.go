@@ -3,12 +3,11 @@
 package api
 
 import (
+	api "Herbal/server/cmd/api/biz/model/api"
+	base "Herbal/server/cmd/api/biz/model/base"
 	"Herbal/server/cmd/api/config"
 	"Herbal/server/shared/kitex_gen/user"
 	"context"
-
-	api "Herbal/server/cmd/api/biz/model/api"
-	base "Herbal/server/cmd/api/biz/model/base"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 )
