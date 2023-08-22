@@ -3,8 +3,8 @@ package rpc
 import (
 	"Herbal/server/cmd/api/config"
 	"Herbal/server/shared/kitex_gen/user/userservice"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/kitex/client"
-	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/loadbalance"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
@@ -12,11 +12,9 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
-	"log"
 )
 
 func initUser() {
-	log.Println(config.GlobalNacosConfig)
 	sc := []constant.ServerConfig{
 		{
 			IpAddr:      config.GlobalNacosConfig.Host,
@@ -44,14 +42,13 @@ func initUser() {
 		},
 	)
 	if err != nil {
-		klog.Errorf("create registry err: %s", err.Error())
+		hlog.Errorf("create registry err: %s", err.Error())
 	}
 	// init resolver
 	r := nacos.NewNacosResolver(cli, nacos.WithGroup(config.GlobalNacosConfig.Group))
 	if err != nil {
-		klog.Fatalf("new consul client failed: %s", err.Error())
+		hlog.Fatalf("new consul client failed: %s", err.Error())
 	}
-	log.Println(r)
 	// init OpenTelemetry
 	//provider.NewOpenTelemetryProvider(
 	//	provider.WithServiceName(config.GlobalServerConfig.UserSrvInfo.Name),
@@ -69,7 +66,7 @@ func initUser() {
 		client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: config.GlobalServerConfig.UserSrvInfo.Name}),
 	)
 	if err != nil {
-		klog.Fatalf("ERROR: cannot init client: %v\n", err)
+		hlog.Fatalf("ERROR: cannot init client: %v\n", err)
 	}
 	config.GlobalUserClient = c
 }

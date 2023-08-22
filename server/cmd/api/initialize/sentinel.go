@@ -1,7 +1,6 @@
 package initialize
 
 import (
-	"github.com/CyanAsterisk/FreeCar/server/shared/consts"
 	sentinel "github.com/alibaba/sentinel-golang/api"
 	"github.com/alibaba/sentinel-golang/core/flow"
 	"github.com/cloudwego/hertz/pkg/common/hlog"
@@ -14,7 +13,7 @@ func InitSentinel() {
 	}
 	_, err = flow.LoadRules([]*flow.Rule{
 		{
-			Resource:               consts.FreeCar,
+			Resource:               "herbal",
 			Threshold:              10,
 			TokenCalculateStrategy: flow.WarmUp,
 			ControlBehavior:        flow.Throttling,

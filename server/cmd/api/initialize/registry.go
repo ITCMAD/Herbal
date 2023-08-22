@@ -5,7 +5,7 @@ import (
 	"Herbal/server/shared/consts"
 	"github.com/bwmarrin/snowflake"
 	"github.com/cloudwego/hertz/pkg/app/server/registry"
-	"github.com/cloudwego/kitex/pkg/klog"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/kitex/pkg/utils"
 	"github.com/hertz-contrib/registry/nacos"
 	"github.com/nacos-group/nacos-sdk-go/clients"
@@ -20,10 +20,10 @@ func InitRegistry() (registry.Registry, *registry.Info) {
 	v := viper.New()
 	v.SetConfigFile(consts.ApiConfigPath)
 	if err := v.ReadInConfig(); err != nil {
-		klog.Fatalf("read viper config failed: %s", err)
+		hlog.Fatalf("read viper config failed: %s", err)
 	}
 	if err := v.Unmarshal(&config.GlobalNacosConfig); err != nil {
-		klog.Fatalf("unmarshal err failed: %s", err)
+		hlog.Fatalf("unmarshal err failed: %s", err)
 	}
 	sc := []constant.ServerConfig{
 		*constant.NewServerConfig(config.GlobalNacosConfig.Host, config.GlobalNacosConfig.Port),
@@ -47,14 +47,14 @@ func InitRegistry() (registry.Registry, *registry.Info) {
 		},
 	)
 	if err != nil {
-		klog.Errorf("create registry err: %s", err.Error())
+		hlog.Errorf("create registry err: %s", err.Error())
 	}
 
 	r := nacos.NewNacosRegistry(cli, nacos.WithRegistryGroup(config.GlobalNacosConfig.Group))
 
 	sf, err := snowflake.NewNode(consts.NacosSnowflakeNode)
 	if err != nil {
-		klog.Fatalf("generate nacos service name failed:%s", err)
+		hlog.Fatalf("generate nacos service name failed:%s", err)
 	}
 	info := &registry.Info{
 		ServiceName: config.GlobalServerConfig.Name,

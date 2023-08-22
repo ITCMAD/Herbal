@@ -21,7 +21,6 @@ func InitConfig() {
 	if err := v.Unmarshal(&config.GlobalNacosConfig); err != nil {
 		klog.Fatalf("unmarshal err failed: %s", err)
 	}
-	klog.Infof("Config Info: %v", config.GlobalNacosConfig)
 
 	sc := []constant.ServerConfig{
 		*constant.NewServerConfig(config.GlobalNacosConfig.Host, config.GlobalNacosConfig.Port),

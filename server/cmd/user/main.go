@@ -6,7 +6,6 @@ import (
 	"Herbal/server/cmd/user/pkg/mysql"
 	"Herbal/server/cmd/user/pkg/redis"
 	user "Herbal/server/shared/kitex_gen/user/userservice"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/limit"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
@@ -41,7 +40,6 @@ func main() {
 		server.WithSuite(tracing.NewServerSuite()),
 		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: config.GlobalServerConfig.Name}),
 	)
-	hlog.Info("Run!")
 	err := svr.Run()
 
 	if err != nil {

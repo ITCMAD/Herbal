@@ -6,7 +6,6 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 	"os"
 	"path"
-	"runtime"
 	"time"
 
 	kitexlogrus "github.com/kitex-contrib/obs-opentelemetry/logging/logrus"
@@ -39,9 +38,8 @@ func InitLogger() {
 		Compress:   true, // Compress with gzip.
 	}
 
-	if runtime.GOOS == "linux" {
-		logger.SetOutput(lumberjackLogger)
-	}
+	logger.SetOutput(lumberjackLogger)
+
 	logger.SetLevel(klog.LevelDebug)
 
 	klog.SetLogger(logger)

@@ -10,13 +10,11 @@ import (
 	"gorm.io/gorm/logger"
 	"gorm.io/plugin/opentelemetry/logging/logrus"
 	"gorm.io/plugin/opentelemetry/tracing"
-	"log"
 	"time"
 )
 
 // InitDB to init database
 func InitDB() *gorm.DB {
-	log.Println(config.GlobalServerConfig.MysqlInfo)
 	c := config.GlobalServerConfig.MysqlInfo
 	dsn := fmt.Sprintf(consts.MySqlDSN, c.User, c.Password, c.Host, c.Port, c.Name)
 	newLogger := logger.New(

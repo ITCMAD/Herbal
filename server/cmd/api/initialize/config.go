@@ -3,6 +3,7 @@ package initialize
 import (
 	"Herbal/server/cmd/api/config"
 	"Herbal/server/shared/consts"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
@@ -40,23 +41,23 @@ func InitConfig() {
 		"clientConfig":  cc,
 	})
 	if err != nil {
-		klog.Fatalf("create config client failed: %s", err)
+		hlog.Fatalf("create config client failed: %s", err)
 	}
 	content, err := configClient.GetConfig(vo.ConfigParam{
 		DataId: config.GlobalNacosConfig.DataId,
 		Group:  config.GlobalNacosConfig.Group,
 	})
 	if err != nil {
-		klog.Fatalf("get config failed: %s", err.Error())
+		hlog.Fatalf("get config failed: %s", err.Error())
 	}
 
 	viper.SetConfigType("yaml")
 	err = viper.ReadConfig(strings.NewReader(content))
 	if err != nil {
-		klog.Fatal("viper fail to read config")
+		hlog.Fatal("viper fail to read config")
 	}
 	err = viper.Unmarshal(&config.GlobalServerConfig)
 	if err != nil {
-		klog.Fatalf("nacos config failed: %s", err)
+		hlog.Fatalf("nacos config failed: %s", err)
 	}
 }
